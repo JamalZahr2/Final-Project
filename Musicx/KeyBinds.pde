@@ -1,11 +1,13 @@
 void keyBinds() {
-  if ( key == CODED | CODED == ESC ) {
-    exit();
+  if ( Song1.position() >= Song1.length() ) {
+    SongPlay = false;
   }
-  if ( key == CODED | CODED == DELETE ) {
-    exit();
+  if ( Song2.position() >= Song2.length() ) {
+    SongPlay = false;
   }
-  //if ( Song3.play(117000) ) { SongPlay = false; }
+  if ( Song3.position() >= Song3.length() ) { 
+    SongPlay = false;
+  }
   if ( key == '1' && SongPlay == false ) {
     Song1.play(); //Parameter is milli-seconds from start of audio file to start playing
     SongPlay = true;
@@ -29,5 +31,42 @@ void keyBinds() {
   if ( key == '3' && key == '+' ) {
     Song3.loop(0);
     SongPlay = true;
+  }
+  if ( key == CODED | keyCode == TAB ) { 
+    if ( SongMute = false ) {
+      Song1.mute(); 
+      Song2.mute(); 
+      Song3.mute();
+      SongMute = true;
+    } 
+    if ( SongMute = true ) {
+      Song1.unmute(); 
+      Song2.unmute(); 
+      Song3.unmute();
+      SongMute = false;
+    }
+  } //Next lines of code need fixing, do it!
+  if ( key == ' ' && Song1.isPlaying() ) {
+    Song1.pause();
+  } else {
+    Song1.play();
+  }
+  if ( key = ' ' ) {
+    if ( Song2.isPlaying() ) {
+      Song2.pause();
+    } else {
+      Song2.play();
+    }
+  }
+  if ( key = ' ' && Song3.isPlaying() ) {
+    Song3.pause();
+  } else {
+    Song3.play();
+  }
+  if ( key == CODED | CODED == ESC ) {
+    exit();
+  }
+  if ( key == CODED | CODED == DELETE ) {
+    exit();
   }
 } //End keyBinds

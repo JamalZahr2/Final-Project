@@ -11,7 +11,8 @@ AudioPlayer Song2;
 AudioPlayer Song3;
 //
 Boolean SongPlay = false;
-//float Song1End, Song2End, Song3End
+float Song1End, Song2End, Song3End;
+Boolean SongMute = false;
 //
 void setup() {
   size(480, 660);
