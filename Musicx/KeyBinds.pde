@@ -1,4 +1,7 @@
-void keyBinds() {
+void keyBinds() { // The song selection is broken, make only one play at a time with a requirement involved such as SongPlay
+  if ( key == '1' ) { Song1.play() && SongPlay = true;}
+  if () {;}
+  if () {;}
   if ( Song1.position() >= Song1.length() ) {
     SongPlay = false;
   }
@@ -7,30 +10,6 @@ void keyBinds() {
   }
   if ( Song3.position() >= Song3.length() ) { 
     SongPlay = false;
-  }
-  if ( key == '1' && SongPlay == false ) {
-    Song1.play(); //Parameter is milli-seconds from start of audio file to start playing
-    SongPlay = true;
-  }
-  if ( key == '1' && key == '+' ) {
-    Song1.loop(0);
-    SongPlay = true;
-  }
-  if ( key == '2' && SongPlay == false ) {
-    Song2.play();
-    SongPlay = true;
-  }
-  if ( key == '2' && key == '+' ) {
-    Song2.loop(0);
-    SongPlay = true;
-  }
-  if ( key == '3' && SongPlay == false ) {
-    Song3.play();
-    SongPlay = true;
-  }
-  if ( key == '3' && key == '+' ) {
-    Song3.loop(0);
-    SongPlay = true;
   }
   if ( key == CODED | keyCode == TAB ) { 
     if ( SongMute = false ) {
@@ -45,23 +24,36 @@ void keyBinds() {
       Song3.unmute();
       SongMute = false;
     }
-  } //Next lines of code need fixing, do it!
+  }
   if ( key == ' ' && Song1.isPlaying() ) {
     Song1.pause();
   } else {
     Song1.play();
   }
-  if ( key = ' ' ) {
-    if ( Song2.isPlaying() ) {
-      Song2.pause();
-    } else {
-      Song2.play();
+  if ( key == 'l' || key == 'L' && Song1.isPlaying() ) { 
+    if ( Song1.position() >= Song1.length() ) {
+      Song1.loop(0);
     }
   }
-  if ( key = ' ' && Song3.isPlaying() ) {
+  if ( key == ' ' && Song2.isPlaying() ) {
+    Song2.pause();
+  } else {
+    Song2.play();
+  }
+  if ( key == 'l' || key == 'L' && Song2.isPlaying() ) {
+    if ( Song2.position() >= Song2.length() ) {
+      Song2.loop(0);
+    }
+  }
+  if ( key == ' ' && Song3.isPlaying() ) {
     Song3.pause();
   } else {
     Song3.play();
+  }
+  if ( key == 'l' || key == 'L' && Song3.isPlaying() ) {
+    if ( Song3.position() >= Song3.length() ) {
+      Song3.loop(0);
+    }
   }
   if ( key == CODED | CODED == ESC ) {
     exit();
