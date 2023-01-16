@@ -10,6 +10,11 @@ AudioPlayer Song0;
 AudioPlayer Song1; //Creates a "Play List" variable holding extensions WAV, AIFF, AU, SND, OBB, MP3
 AudioPlayer Song2;
 AudioPlayer Song3;
+/*AudioPlayer SongNo1;
+AudioPlayer SongNo2;
+AudioPlayer SongNo3;
+AudioPlayer SongNo4;
+*///Deprecated for further use
 //
 Boolean SongPlay = false;
 float Song1End, Song2End, Song3End;
@@ -17,11 +22,8 @@ Boolean SongMute = false;
 //
 void setup() {
   size(480, 660);
-  minim = new Minim(this); //Loading data from directory, loadFile should also load from prohect folder, like loadImage
-  Song0 = minim.loadFile("");
-  Song1 = minim.loadFile("../Musicxs/SneakySnitch.mp3");
-  Song2 = minim.loadFile("../Musicxs/At_the_Speed_of_Light.mp3");
-  Song3 = minim.loadFile("../Musicxs/A_Dance_of_Fire_and_Ice.mp3");
+  population();
+  Array();
   //Song1End = Song1.play();
   //Song2End = Song2.play();
   //Song3End = Song3.play(117000);

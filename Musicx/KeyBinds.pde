@@ -1,7 +1,13 @@
 void keyBinds() { // The song selection is broken, make only one play at a time with a requirement involved such as SongPlay
-  if ( key == '1' ) { Song1.play() && SongPlay = true;}
-  if () {;}
-  if () {;}
+  if ( key == '1' ) { 
+    Song1.play() && SongPlay = true;
+  }
+  if () {
+    ;
+  }
+  if () {
+    ;
+  }
   if ( Song1.position() >= Song1.length() ) {
     SongPlay = false;
   }
