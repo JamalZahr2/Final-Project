@@ -17,7 +17,7 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
   if ( Song3.position() >= Song3.length() ) { 
     SongPlay = false;
   }
-  if ( key == CODED | keyCode == TAB ) { 
+  if ( key == CODED || keyCode == TAB ) { 
     if ( SongMute = false ) {
       Song1.mute(); 
       Song2.mute(); 
@@ -61,10 +61,10 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
       Song3.loop(0);
     }
   }
-  if ( key == CODED | CODED == ESC ) {
+  if ( key == CODED || CODED == ESC ) {
     exit();
   }
-  if ( key == CODED | CODED == DELETE ) {
+  if ( key == CODED || CODED == DELETE ) {
     exit();
   }
 } //End keyBinds
