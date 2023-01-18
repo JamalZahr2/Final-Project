@@ -1,4 +1,3 @@
-ddf.minim.AudioPlayer[] SongNumber = { Song0, Song1, Song2, Song3 };
 /*void setVolume(float v) {
   v = 
 }*///First Complete Array Initialization combined with Song 'Playlist'
