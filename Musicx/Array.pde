@@ -2,10 +2,6 @@
   v = 
 }*///First Complete Array Initialization combined with Song 'Playlist'
 void Array() {
-  if ( key == UP ) {
-  }
-  if ( key == DOWN ) {
-  }
 } //End Array
 //
 //ddf.minim.AudioPlayer[] SongNumber = new ddf.minim.AudioPlayer[3];
