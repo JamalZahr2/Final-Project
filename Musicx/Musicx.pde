@@ -8,6 +8,8 @@ import ddf.minim.ugens.*;
 import java.io.*;
 import java.lang.*; //Imports java language 
 //
+File file;
+//
 Minim minim; //Creates and object to access all functions
 int SongNumber = 4;
 AudioPlayer[] Song = new AudioPlayer[SongNumber];
@@ -22,7 +24,7 @@ void setup() {
   size(480, 660);
   population();
   Volume();
-  Array();
+  playListArrayError();
   //Go here for more specification: https://github.com/Intro-CS-App-Dev-and-Deploy/App-Development/blob/main/Music%20Program/Prototyping%20Minim/Mutliple%20Songs%20with%20Arrays/03%20Next%20Previous%20Buttons/NextConsole/NextConsole.pde
   //Song1End = Song1.play();
   //Song2End = Song2.play();

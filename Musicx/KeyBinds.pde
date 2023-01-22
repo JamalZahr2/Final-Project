@@ -1,53 +1,93 @@
 Boolean LoopOn = false, PlayContinue = true;
 //
 void keyBinds() { // The song selection is broken, make only one play at a time with a requirement involved such as SongPlay
-  if ( key == UP && v < 10 ) { 
-    v = v + 1;
-  } //Volume Up
-  if ( key == DOWN && v > 0 ) { 
-    v = v - 1;
-  } //Volume Down
-  if ( key == LEFT ) {
-    if ( Song[CurrentSong].isPlaying() ) {
-      Song[CurrentSong].pause();
-      Song[CurrentSong].rewind();
-      //arrayErrorFix();
-      if ( CurrentSong == SongNumber - SongNumber ) {
-        CurrentSong = SongNumber - 1;
-      } else {
-        CurrentSong -= 1;
+  if ( key == CODED ) {
+    if ( keyCode == DOWN ) {
+      if ( v <= 25 && v > -25 ) {
+        v = v - 5;
       }
-      Song[CurrentSong].play();
-    } else {
-      Song[CurrentSong].rewind();
-      if ( CurrentSong == SongNumber - SongNumber ) {
-        CurrentSong = SongNumber - 1;
+      if ( v == -30 ) {
+        Song[CurrentSong].mute();
+      }
+    }
+  } //Volume Down
+  if ( key == CODED ) { 
+    if ( keyCode == UP ) {
+      if ( v < 25 && v > -25 ) {
+        v = v + 5;
+      }
+      if ( v > -30 ) {
+        Song[CurrentSong].unmute();
+      }
+    }
+  } //Volume Up
+  if ( key == CODED ) {
+    if ( keyCode == LEFT ) {
+      if ( Song[CurrentSong].isPlaying() ) {
+        Song[CurrentSong].pause();
+        Song[CurrentSong].rewind();
         //arrayErrorFix();
+        if ( CurrentSong == SongNumber - SongNumber ) {
+          CurrentSong = SongNumber - 1;
+        } else {
+          CurrentSong -= 1;
+        }
+        Song[CurrentSong].play();
       } else {
-        CurrentSong -= 1;
+        Song[CurrentSong].rewind();
+        if ( CurrentSong == SongNumber - SongNumber ) {
+          CurrentSong = SongNumber - 1;
+          //arrayErrorFix();
+        } else {
+          CurrentSong -= 1;
+        }
       }
     }
   } //Back/Return
   //
-  if ( key == RIGHT ) { 
-    if ( Song[CurrentSong].isPlaying() ) {
-      Song[CurrentSong].pause();
-      Song[CurrentSong].rewind();
-      //arrayErrorFix();
-      CurrentSong = SongNumber + 1;
-      Song[CurrentSong].play();
-    } else if ( CurrentSong == SongNumber ) {
-      CurrentSong = SongNumber - SongNumber;
-    } else {
-      CurrentSong = SongNumber + 1;
+  if ( key == CODED ) { 
+    if ( keyCode == RIGHT ) {
+      if ( Song[CurrentSong].isPlaying() ) {
+        Song[CurrentSong].pause();
+        Song[CurrentSong].rewind();
+        //arrayErrorFix();
+        if ( CurrentSong == SongNumber - SongNumber ) {
+          CurrentSong = SongNumber - SongNumber + 1;
+        } else {
+          CurrentSong += 1;
+        }
+        Song[CurrentSong].play();
+      } else {
+        Song[CurrentSong].rewind();
+        if ( CurrentSong == SongNumber - SongNumber ) {
+          CurrentSong = SongNumber - SongNumber + 1;
+          //arrayErrorFix();
+        } else {
+          CurrentSong += 1;
+          //
+          /*if ( Song[CurrentSong].isPlaying() ) {
+           Song[CurrentSong].pause();
+           Song[CurrentSong].rewind();
+           //arrayErrorFix();
+           CurrentSong = SongNumber + 1;
+           Song[CurrentSong].play();
+           } else if ( CurrentSong == SongNumber ) {
+           CurrentSong = SongNumber - SongNumber;
+           } else {
+           CurrentSong = SongNumber + 1;
+           } */
+        }
+      }
     }
   } //Next Song
   //
   if ( key == ' ' ) { 
-    if ( Song[CurrentSong].isPlaying() ) { 
-      Song[CurrentSong].pause();
-    } else { 
-      Song[CurrentSong].play();
+    if ( CurrentSong > SongNumber - SongNumber ) {
+      if ( Song[CurrentSong].isPlaying() ) { 
+        Song[CurrentSong].pause();
+      } else { 
+        Song[CurrentSong].play();
+      }
     }
   } //Play/Pause
   //
@@ -71,7 +111,7 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
     }
   } //Decides whether when a song ends should it continue or go back to Song 0
   //
-  if ( Song[CurrentSong].position() == Song[CurrentSong].length() ) {
+  if ( Song[CurrentSong].position() == Song[CurrentSong].length() && Song[CurrentSong].isPlaying() && CurrentSong > SongNumber - SongNumber ) {
     Song[CurrentSong].pause();
     Song[CurrentSong].rewind();
     //arrayErrorFix();
@@ -84,14 +124,20 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
       CurrentSong = SongNumber - SongNumber;
       Song[CurrentSong].play();
     } //When song ends go back to Song 0 if Loop or PlayContinue is off
+  } else {
+    CurrentSong = SongNumber - SongNumber;
+  }
+  if ( CurrentSong > SongNumber ) { 
+    CurrentSong = SongNumber - SongNumber;
   }
 } //End keyBinds
 
 /* To do List: 
-- Fix ArrayFixError [ ] 
-- Debug [ ]
-- Add any missing features if not already added (Such as mute) [ ]
+ - Fix ArrayFixError [ ] ***
+ - Debug [ ] **
+ - Add any missing features if not already added (Such as mute) [ ] 
  */
+ 
 // Deprecated Code (Old)
 //if (  ) { ; }
 //

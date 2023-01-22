@@ -1,7 +1,8 @@
 /*void setVolume(float v) {
   v = 
 }*///First Complete Array Initialization combined with Song 'Playlist'
-void Array() {
+void playListArrayError() {
+  //arrayErrorFix();
 } //End Array
 //
 //ddf.minim.AudioPlayer[] SongNumber = new ddf.minim.AudioPlayer[3];
