@@ -1,6 +1,6 @@
 Boolean LoopOn = false, PlayContinue = true;
 //
-void keyBinds() { // The song selection is broken, make only one play at a time with a requirement involved such as SongPlay
+void keyBinds() {
   if ( key == 'm' || key == 'M' ) { 
     if ( Song[CurrentSong].isMuted() ) {
       Song[CurrentSong].unmute();
@@ -75,18 +75,6 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
         } else {
           CurrentSong += 1;
           Song[CurrentSong].play();
-          //
-          /*if ( Song[CurrentSong].isPlaying() ) {
-           Song[CurrentSong].pause();
-           Song[CurrentSong].rewind();
-           //arrayErrorFix();
-           CurrentSong = SongNumber + 1;
-           Song[CurrentSong].play();
-           } else if ( CurrentSong == SongNumber ) {
-           CurrentSong = SongNumber - SongNumber;
-           } else {
-           CurrentSong = SongNumber + 1;
-           } */
         }
       }
     }
@@ -106,6 +94,7 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
     if ( LoopOn == false ) {
       println( "Loop is Turned On" );
       LoopOn = true;
+      PlayContinue = false;
     } else {
       println( "Loop is Turned Off" );
       LoopOn = false;
@@ -116,6 +105,7 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
     if ( PlayContinue == false ) {
       println( "Song Stop is Disabled" );
       PlayContinue = true;
+      LoopOn = false;
     } else {
       println( "Song Stop is Enabled" );
       PlayContinue = false;
@@ -128,7 +118,7 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
   if ( key == 'r' || key == 'R' ) { 
     Song[CurrentSong].skip( -5000 );
   }
-  if ( key=='b' || key=='B' ) { //Stop Button
+  if ( key == 'b' || key == 'B' ) { //Stop Button
     if ( Song[CurrentSong].isPlaying() ) {
       Song[CurrentSong].pause();
       Song[CurrentSong].rewind();
@@ -136,6 +126,7 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
       Song[CurrentSong].rewind();
     }
   }//End Stop Button
+  KeyBindFunction();
 } //End keyBinds
 
 /* To do List: 
