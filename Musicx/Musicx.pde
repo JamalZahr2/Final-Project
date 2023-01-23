@@ -23,21 +23,20 @@ Boolean SongPlay = false;
 void setup() {
   size(480, 660);
   population();
-  Volume();
-  playListArrayError();
   //Go here for more specification: https://github.com/Intro-CS-App-Dev-and-Deploy/App-Development/blob/main/Music%20Program/Prototyping%20Minim/Mutliple%20Songs%20with%20Arrays/03%20Next%20Previous%20Buttons/NextConsole/NextConsole.pde
-  //Song1End = Song1.play();
-  //Song2End = Song2.play();
-  //Song3End = Song3.play(117000);
 } //End setup
 //
 void draw() {
 } //End draw
 //
 void keyPressed() {
+  KeyBindFunction();
   keyBinds();
+  Volume(); 
 } //End keyPressed
 //
 void mousePressed() {
+  KeyBindFunction();
   keyBinds();
+  Volume();
 } //End mousePressed

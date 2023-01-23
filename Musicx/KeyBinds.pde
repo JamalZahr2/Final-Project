@@ -1,22 +1,31 @@
 Boolean LoopOn = false, PlayContinue = true;
 //
 void keyBinds() { // The song selection is broken, make only one play at a time with a requirement involved such as SongPlay
+  if ( key == 'm' || key == 'M' ) { 
+    if ( Song[CurrentSong].isMuted() ) {
+      Song[CurrentSong].unmute();
+      println("PlayBack is No Longer Muted");
+    } else {
+      Song[CurrentSong].mute();
+      println("PlayBack is Muted");
+    }
+  }
   if ( key == CODED ) {
     if ( keyCode == DOWN ) {
       if ( v <= 25 && v > -25 ) {
-        v = v - 5;
+        v = v - 1;
       }
-      if ( v == -30 ) {
+      if ( v == -25 ) {
         Song[CurrentSong].mute();
       }
     }
   } //Volume Down
   if ( key == CODED ) { 
     if ( keyCode == UP ) {
-      if ( v < 25 && v > -25 ) {
-        v = v + 5;
+      if ( v < 25 && v >= -25 ) {
+        v = v + 1;
       }
-      if ( v > -30 ) {
+      if ( v > -25 ) {
         Song[CurrentSong].unmute();
       }
     }
@@ -51,19 +60,21 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
         Song[CurrentSong].pause();
         Song[CurrentSong].rewind();
         //arrayErrorFix();
-        if ( CurrentSong == SongNumber - SongNumber ) {
-          CurrentSong = SongNumber - SongNumber + 1;
+        if ( CurrentSong == SongNumber - 1 ) {
+          CurrentSong = SongNumber - SongNumber;
         } else {
           CurrentSong += 1;
         }
         Song[CurrentSong].play();
       } else {
         Song[CurrentSong].rewind();
-        if ( CurrentSong == SongNumber - SongNumber ) {
-          CurrentSong = SongNumber - SongNumber + 1;
+        if ( CurrentSong == SongNumber - 1 ) {
+          CurrentSong = SongNumber - SongNumber;
           //arrayErrorFix();
+          Song[CurrentSong].play();
         } else {
           CurrentSong += 1;
+          Song[CurrentSong].play();
           //
           /*if ( Song[CurrentSong].isPlaying() ) {
            Song[CurrentSong].pause();
@@ -111,33 +122,28 @@ void keyBinds() { // The song selection is broken, make only one play at a time 
     }
   } //Decides whether when a song ends should it continue or go back to Song 0
   //
-  if ( Song[CurrentSong].position() == Song[CurrentSong].length() && Song[CurrentSong].isPlaying() && CurrentSong > SongNumber - SongNumber ) {
-    Song[CurrentSong].pause();
-    Song[CurrentSong].rewind();
-    //arrayErrorFix();
-    if ( LoopOn == true ) {
-      Song[CurrentSong].play();
-    } else if ( PlayContinue == true ) {
-      CurrentSong = SongNumber + 1;
-      Song[CurrentSong].play();
+  if ( key == 'f' || key == 'F' ) { 
+    Song[CurrentSong].skip( 5000 );
+  }
+  if ( key == 'r' || key == 'R' ) { 
+    Song[CurrentSong].skip( -5000 );
+  }
+  if ( key=='b' || key=='B' ) { //Stop Button
+    if ( Song[CurrentSong].isPlaying() ) {
+      Song[CurrentSong].pause();
+      Song[CurrentSong].rewind();
     } else {
-      CurrentSong = SongNumber - SongNumber;
-      Song[CurrentSong].play();
-    } //When song ends go back to Song 0 if Loop or PlayContinue is off
-  } else {
-    CurrentSong = SongNumber - SongNumber;
-  }
-  if ( CurrentSong > SongNumber ) { 
-    CurrentSong = SongNumber - SongNumber;
-  }
+      Song[CurrentSong].rewind();
+    }
+  }//End Stop Button
 } //End keyBinds
 
 /* To do List: 
- - Fix ArrayFixError [ ] ***
+ - Fix ArrayFixError [x] ***
  - Debug [ ] **
  - Add any missing features if not already added (Such as mute) [ ] 
  */
- 
+
 // Deprecated Code (Old)
 //if (  ) { ; }
 //

@@ -1,6 +1,6 @@
-float v = 0;
+float v;
 //
 void Volume() {
   Song[CurrentSong].setGain(v);
-  
+  //println(v); //Debug
 } //End volume

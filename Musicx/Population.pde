@@ -1,5 +1,11 @@
 void population() {
   minim = new Minim(this); //Loading data from directory, loadFile should also load from prohect folder, like loadImage
+  v = 0;
+  Song[CurrentSong] = minim.loadFile("../Musicxs/2-seconds-of-silence.mp3");
+  Song[CurrentSong += 1] = minim.loadFile("../Musicxs/SneakySnitch.mp3");
+  Song[CurrentSong += 1] = minim.loadFile("../Musicxs/At_the_Speed_of_Light.mp3");
+  Song[CurrentSong += 1] = minim.loadFile("../Musicxs/A_Dance_of_Fire_and_Ice.mp3");
+  //
   //file = new File(dataPath("../../../../Musicxs/.mp3"));
   File folder = new File("D:/Documents/Github/Final-Project/Musicxs");
   File[] FileList = folder.listFiles();
@@ -12,11 +18,6 @@ void population() {
   }
   //println(""); //Debug and Song List via java
   //printArray(FileList); //Had no time to finish/optimize, using processing language
-  v = 0;
-  Song[CurrentSong] = minim.loadFile("../Musicxs/2-seconds-of-silence.mp3");
-  Song[CurrentSong += 1] = minim.loadFile("../Musicxs/SneakySnitch.mp3");
-  Song[CurrentSong += 1] = minim.loadFile("../Musicxs/At_the_Speed_of_Light.mp3");
-  Song[CurrentSong += 1] = minim.loadFile("../Musicxs/A_Dance_of_Fire_and_Ice.mp3");
 } //End population
 
 //Deprecated Code (Old):
