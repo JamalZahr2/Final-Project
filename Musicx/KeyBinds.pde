@@ -131,7 +131,9 @@ void keyBinds() {
 
 /* To do List: 
  - Fix ArrayFixError [x] ***
- - Debug [ ] **
+ - Add String auto assign/populate code, determine absolute pathway through relative pathway and take only the music files [ ]
+ - Use the java.io array to allow 'drag and drop' music files [ ] 
+ - Debug [ ] (Something with Song[CurrentSong].length()) **
  - Add any missing features if not already added (Such as mute) [ ] 
  */
 
