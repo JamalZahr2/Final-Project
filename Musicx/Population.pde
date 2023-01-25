@@ -7,8 +7,15 @@ void population() {
   Song[CurrentSong += 1] = minim.loadFile("../Musicxs/A_Dance_of_Fire_and_Ice.mp3");
   CurrentSong -= CurrentSong;
   //
+  File Path = new File("/Final-Project/Musicxs");
   //file = new File(dataPath("../../../../Musicxs/.mp3"));
-  File folder = new File("F:/My Documents/GitHub/Hello-World/Final-Project/Musicxs");
+  String Absolute = Path.getAbsolutePath();
+  File folder = new File("D:/Documents/GitHub/Final-Project/Musicxs" /*Absolute*/);
+  System.out.println(Path.getPath());
+  System.out.println(Absolute);
+  //
+  File directory = new File("./Documents/");
+  System.out.println(directory.getAbsolutePath());
   File[] FileList = folder.listFiles();
   for (File file : FileList) {
     if (file.isFile()) {
