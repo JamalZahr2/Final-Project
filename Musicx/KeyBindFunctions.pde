@@ -1,5 +1,5 @@
 void KeyBindFunction() {
-  if ( Song[CurrentSong].position() >= Song[CurrentSong].length() ) {
+  if ( Song[CurrentSong].position() >= Song[CurrentSong].length() ) { //Ended up not having enough time to look into this planted bug
     if ( LoopOn == true && Song[CurrentSong].isPlaying() ) {
       Song[CurrentSong].pause();
       Song[CurrentSong].rewind();
